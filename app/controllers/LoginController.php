@@ -45,5 +45,7 @@ class LoginController extends BaseController {
 		else {
 			return Redirect::to('login')->withErrors('Usuário ou Senha Inválido');
 		}
+
+		
    } 
 }

@@ -20,8 +20,8 @@ class TaskController extends BaseController{
 
 			//criando regras de validação
 			$regras = array('titulo' => 'required');
-
-			//executando validação
+//			executando
+			// validação
 			$validacao = Validator::make(Input::all(), $regras);
 
 			//se a validação deu errado

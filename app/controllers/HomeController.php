@@ -26,4 +26,13 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
+
+		public function testJson($lista_id){
+
+		$lista = User::find(Auth::user()->id)->listas()->where('id', '=', $lista_id)->first();
+		$tasks = Task::where('list_id', '=' , 7);
+	    
+       	var_dump ( $tasks );	
+	
+    }
 }

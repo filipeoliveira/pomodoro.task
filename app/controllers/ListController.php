@@ -39,7 +39,21 @@ class ListController extends BaseController {
     public function listarTasks($lista_id = 0) {
         if ($lista_id == 0)
         return $this->listar();
-    
-        return View::make('listas/lista')->with('lista', User::find(Auth::user()->id)->listas()->where('id', '=', $lista_id)->first());
+            
+            $lista = User::find(Auth::user()->id)->listas()->where('id', '=', $lista_id)->first();
+            $tasks = DB::table('tasks')->where('list_id', '=', $lista_id)->get();
+
+        if(Request::ajax()){
+
+
+          Response::json(array($lista, $tasks));
+
+
+        }
+
+        return View::make('listas/lista')->with('lista', $lista)
+                                         ->with('tasks', $tasks);
+
+        
     }
 }

@@ -12,11 +12,17 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('template');
 });
 
 
 
+Route::any('/template', function() {
+    return View::make('template');
+});
+
+
+Route::get('/json/{lista_id}', 'HomeController@testJson');
 
 /*
 |**************************************************************************
@@ -49,10 +55,10 @@ Route::filter('auth', function(){
 |
 */
 
-Route::any('/', array("as" => "home",
-              function() { return View::make('home'); }
-        )
-);
+//Route::any('/', array("as" => "home",
+ //             function() { return View::make('home'); }
+//        )
+//);
 
 
 
@@ -67,9 +73,16 @@ Route::any('/', array("as" => "home",
 |
 */
 
-Route::any('ola/{usuario?}', 'HomeController@ola');
+//Route::any('ola/{usuario?}', 'HomeController@ola');
+Route::get('ola', function(){
+	return View::make('ola');
+});
 
+	Route::get('content', function() {
 
+    return View::make('content');
+
+    });
 
 /*
 |--------------------------------------------------------------------------
@@ -117,7 +130,7 @@ Route::post('login',array('as' => 'login', function(){
 	//tenta logar o usuário
 	if (Auth::attempt($dadosDoUsuario) ) {
 
-		return Redirect::to(Input::get('paginaAcessada'));
+		return Redirect::to('list');
 		//Redirect::to(Input::get('paginaAcessada'));
 	}
 	else {
@@ -193,8 +206,9 @@ Route::group(array('before' => 'auth'), function(){
 	|--------------------------------------------------------------------------
 	*/
 	
-	Route::get('list', 'ListController@listar');
-	Route::get('list/{lista_id?}', 'ListController@listarTasks');
+	//Route::get('list', 'ListController@listar');
+    Route::get('list/{lista_id?}', 'ListController@listarTasks');
+
 
 
 
