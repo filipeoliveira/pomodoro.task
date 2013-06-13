@@ -16,6 +16,10 @@ Route::get('/', function()
 });
 
 
+Route::any('/hello', function() {
+	return View::make('hello');
+});
+
 
 Route::any('/template', function() {
     return View::make('template');
