@@ -25,6 +25,10 @@ Route::any('/template', function() {
     return View::make('template');
 });
 
+Route::any('/list/show', function(){
+	return View::make('listas/show_listas');
+});
+
 
 Route::get('/json/{lista_id}', 'HomeController@testJson');
 
@@ -189,7 +193,7 @@ Route::group(array('before' => 'auth'), function(){
 	*/
 
 	Route::get('list/create', 'ListController@getCreate');
-	Route::post('list/create', 'ListController@postCreate');
+	Route::post('list', 'ListController@postCreate');
 
 
 

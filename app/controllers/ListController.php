@@ -17,7 +17,7 @@ class ListController extends BaseController {
 
         //se a validação deu errado
         if ($validacao->fails()) {
-            return Redirect::to('list/create')->withErrors($validacao);
+            return 10;//return Redirect::to('list/create')->withErrors($validacao);
         }
         //se a validação deu certo
         else {
@@ -26,7 +26,9 @@ class ListController extends BaseController {
             $list->user_id = Auth::user()->id;
             $list->save();
 
-            return View::make('listas/add_list')->with('sucesso', TRUE);
+            //return View::make('listas/add_list')->with('sucesso', TRUE);
+            return;
+
         }
     }
 
